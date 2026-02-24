@@ -1,107 +1,114 @@
-# :test_tube: Manual Test Script — E-vini IA (Evino Digital Sommelier)
+# :test_tube: Script de Teste Manual — E-vini IA (Sommelier Digital Evino)
 
-## Objective
-Validate the conversational wine recommendation flow including:
+## :dart: Objetivo
 
-Menu interaction
-Voice & text input
-Product recommendations
-Filters/refinement (ex.: Mais opções, Vinhos brancos)
-Cart management
-Checkout redirection to Evino
-Continue chatting after cart
+Validar o fluxo conversacional do chat de recomendação de vinhos E-vini IA, incluindo:
 
 
----
-
-## Preconditions
-
-Internet connection
-Microphone permission enabled (for voice tests)
-Empty cart (when applicable)
-Supported browser (Safari iOS / Chrome Android / Chrome Desktop)
+Interação pelo menu inicial
+Entrada por texto e áudio
+Recomendações de produtos
+Refinamentos (ex.: Mais opções, Vinhos brancos)
+Adição e gerenciamento do carrinho
+Continuidade da conversa
+Redirecionamento para checkout da Evino
 
 
 ---
 
-## Test Scenarios
+## :gear: Pré-condições
 
-### 1) Initial Chat & Menu
 
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-001 | Load page | Open E-vini IA URL | Welcome message + menu options visible |
-| CT-002 | Select each menu option | Tap each menu item one by one | Bot replies with relevant recommendations |
-| CT-003 | Send typed message | Type “Quero um vinho branco leve” and send | Bot suggests relevant wines |
+Conexão com internet ativa
+Permissão de microfone habilitada
+Navegador suportado (Safari iOS, Chrome Android ou Desktop)
+Carrinho vazio (quando aplicável)
 
----
-
-### 2) Voice Interaction
-
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-004 | Microphone permission | Tap mic icon and allow | Recording starts / UI shows listening state |
-| CT-005 | Speak a menu intent | Speak “Vinho para churrasco” and send | Bot returns barbecue-friendly recommendations |
-| CT-006 | Deny mic permission | Deny access and tap mic again | Guidance shown and no crash; typing still works |
 
 ---
 
-### 3) Product Recommendations (Cards)
-
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-007 | Show product cards | Select “Destaques de Portugal” | Cards show name, tags (grape/country), price and “+” |
-| CT-008 | Validate card UI | Check 3 cards | Layout consistent, readable, CTA clickable |
-| CT-009 | Scroll list | Scroll products area | List scroll works; more items load if applicable |
+## :test_tube: Cenários de Teste
 
 ---
 
-### 4) Refinement Options (Chips/Buttons)
+### :one: Chat Inicial e Menu
 
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-010 | More options | Tap “Mais opções” | More wine cards are shown (not only duplicates) |
-| CT-011 | Filter white wines | Tap “Vinhos brancos” | Results prioritize/filter to white wines |
-| CT-012 | Switch refinements | Tap “Vinhos brancos” then “Mais opções” | Context preserved + more options within the same context |
-
----
-
-### 5) Cart Flow
-
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-013 | Add to cart | Tap “+” on a product | Cart count updates (ex.: (1)) |
-| CT-014 | Open cart | Open cart modal | Item listed with name, price, quantity controls |
-| CT-015 | Change quantity | Use “+” and “-” | Quantity and total update correctly |
-| CT-016 | Remove item | Tap “X” remove | Item removed; cart updates state |
-| CT-017 | Close cart | Close cart modal | Returns to chat without losing context |
+| ID | Caso de Teste | Passos | Resultado Esperado |
+|----|--------------|--------|--------------------|
+| CT-001 | Carregar chat | Acessar a URL do E-vini IA | Mensagem inicial e opções do menu exibidas |
+| CT-002 | Selecionar opção do menu | Clicar em cada opção disponível | Bot retorna recomendações relacionadas |
+| CT-003 | Enviar mensagem digitada | Digitar “Quero um vinho branco leve” | Sugestões coerentes exibidas |
 
 ---
 
-### 6) Continue vs Checkout
+### :two: Interação por Voz
 
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-018 | Continue chatting | In cart, tap “Continuar conversando” | Modal closes and chat keeps working |
-| CT-019 | Checkout redirection | Tap “Finalizar Compra na Evino” | Opens Evino checkout/app correctly |
-| CT-020 | Return to chat | Navigate back to chat after checkout | Chat still accessible; cart state consistent |
-
----
-
-### 7) Edge Cases / Resilience
-
-| ID | Test | Steps | Expected |
-|----|------|-------|----------|
-| CT-021 | Empty message | Try sending with no text | Send blocked or no action; no error |
-| CT-022 | Offline during response | Send message, disable internet, re-enable | Friendly error and recovery option |
-| CT-023 | Very long text | Paste and send long text | UI doesn’t break; limit handled gracefully |
-| CT-024 | Basic accessibility | Increase OS font / zoom | Layout remains usable; controls accessible |
+| ID | Caso | Passos | Resultado Esperado |
+|----|------|--------|--------------------|
+| CT-004 | Permitir microfone | Clicar no ícone de microfone | Sistema inicia captura de áudio |
+| CT-005 | Enviar comando por voz | Falar “Vinho para churrasco” | Recomendações adequadas exibidas |
+| CT-006 | Negar permissão | Negar acesso ao microfone | Mensagem orientativa exibida sem quebrar o fluxo |
 
 ---
 
-## Evidence
+### :three: Recomendações de Produtos
 
-Screenshots & screen recordings
-Device / OS / Browser version
-Date/time
-Expected vs Actual (for failures)
+| ID | Caso | Passos | Resultado Esperado |
+|----|------|--------|--------------------|
+| CT-007 | Exibir cards | Selecionar “Destaques de Portugal” | Cards com nome, preço e botão "+" |
+| CT-008 | Validar layout | Analisar 3 produtos | Informações legíveis e alinhadas |
+| CT-009 | Rolagem | Rolar lista de produtos | Navegação fluida sem travamentos |
+
+---
+
+### :four: Refinamentos
+
+| ID | Caso | Passos | Resultado Esperado |
+|----|------|--------|--------------------|
+| CT-010 | Mais opções | Clicar em “Mais opções” | Novos vinhos exibidos |
+| CT-011 | Vinhos brancos | Selecionar filtro | Resultados filtrados corretamente |
+| CT-012 | Troca de filtros | Alternar filtros | Contexto da conversa mantido |
+
+---
+
+### :five: Carrinho
+
+| ID | Caso | Passos | Resultado Esperado |
+|----|------|--------|--------------------|
+| CT-013 | Adicionar produto | Clicar no botão "+" | Produto adicionado ao carrinho |
+| CT-014 | Abrir carrinho | Abrir modal | Produto listado corretamente |
+| CT-015 | Alterar quantidade | Utilizar +/- | Total recalculado |
+| CT-016 | Remover item | Clicar no X | Item removido |
+| CT-017 | Fechar carrinho | Fechar modal | Retorno ao chat |
+
+---
+
+### :six: Continuar Conversando vs Checkout
+
+| ID | Caso | Passos | Resultado Esperado |
+|----|------|--------|--------------------|
+| CT-018 | Continuar conversa | Clicar “Continuar conversando” | Chat permanece ativo |
+| CT-019 | Finalizar compra | Clicar checkout | Redirecionamento correto para Evino |
+| CT-020 | Retornar ao chat | Voltar após checkout | Estado da conversa preservado |
+
+---
+
+### :seven: Cenários de Exceção
+
+| ID | Caso | Passos | Resultado Esperado |
+|----|------|--------|--------------------|
+| CT-021 | Mensagem vazia | Enviar sem texto | Ação bloqueada |
+| CT-022 | Sem internet | Desconectar rede | Mensagem de erro amigável |
+| CT-023 | Texto longo | Enviar texto extenso | Interface permanece estável |
+| CT-024 | Acessibilidade | Aumentar zoom/fonte | Layout continua utilizável |
+
+---
+
+## :paperclip: Evidências
+
+
+Screenshots
+Gravações de tela
+Dispositivo / Navegador
+Data e hora
+Resultado esperado vs obtido
